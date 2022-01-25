@@ -12,10 +12,11 @@ import asyncio
 import os
 import platform
 
-from .api import init, highlights, me, messages, posts, profile, subscriptions
-from .db import operations
-from .interaction import like
-from .utils import auth, config, download, profiles, prompts
+from onlyfans_scraper.api import init, highlights, me, messages, posts, profile, subscriptions
+from onlyfans_scraper.db import operations
+from onlyfans_scraper.interaction import like
+from onlyfans_scraper.utils import auth, config, download, profiles, prompts
+
 
 from revolution import Revolution
 
@@ -337,6 +338,4 @@ def main():
         do_download_content(
             headers, username, model_id, ignore_prompt=True)
 
-
-if __name__ == '__main__':
-    main()
+main()
