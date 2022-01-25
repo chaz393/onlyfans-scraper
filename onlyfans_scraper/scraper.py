@@ -325,7 +325,17 @@ def main():
     if args.username:
         pass
 
-    process_prompts()
+    profiles.print_current_profile()
+    headers = auth.make_headers(auth.read_auth())
+    init.print_sign_status(headers)
+    subscribe_count = process_me(headers)
+    parsed_subscriptions = get_models(headers, subscribe_count)
+    usernames = get_usernames(parsed_subscriptions)
+
+    for username in usernames:
+        model_id = profile.get_id(headers, username)
+        do_download_content(
+            headers, username, model_id, ignore_prompt=True)
 
 
 if __name__ == '__main__':
